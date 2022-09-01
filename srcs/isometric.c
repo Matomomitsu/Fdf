@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 06:49:46 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/30 19:16:18 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:26:13 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	convert_point(t_point *point, double max_x, double max_y)
 			(max_y * sin(rad(150)));
 	point->converted.x = (x - y) * cos(rad(30)) \
 					+ (600 - max_x / 2);
-	point->converted.x = -z + (x + y) * sin(rad(30)) \
+	point->converted.y = -z + (x + y) * sin(rad(30)) \
 					+ (400 - max_y / 2);
 }

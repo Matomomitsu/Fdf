@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 22:31:10 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/23 03:43:47 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:26:09 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "keys.h"
 
 typedef struct s_image
 {

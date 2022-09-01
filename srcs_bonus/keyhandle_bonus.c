@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 06:50:57 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/23 04:09:57 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:26:09 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	key_handle(int keycode, t_fdf *fdf)
 {
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 		end_loop(fdf);
-	if (keycode == 97 || keycode == 100)
+	if (keycode == KEY_A || keycode == KEY_D)
 		handle_scale(keycode, fdf);
-	if (keycode == 119 || keycode == 115)
+	if (keycode == KEY_W || keycode == KEY_S)
 		handle_z(keycode, fdf);
-	if (keycode == 114)
+	if (keycode == KEY_R)
 		reset(fdf->i_point, fdf);
-	if (keycode == 65362 || keycode == 65364)
+	if (keycode == KEY_UP || keycode == KEY_DOWN)
 		rotation_x(fdf->i_point, fdf, keycode);
-	if (keycode == 65363 || keycode == 65361)
+	if (keycode == KEY_RIGHT || keycode == KEY_RIGHT)
 		rotation_y(fdf->i_point, fdf, keycode);
-	if (keycode == 109 || keycode == 110)
+	if (keycode == KEY_M || keycode == KEY_N)
 		rotation_z(fdf->i_point, fdf, keycode);
-	if (keycode == 102 || keycode == 104)
+	if (keycode == KEY_H || keycode == KEY_F)
 		translation_x(fdf->i_point, fdf, keycode);
-	if (keycode == 116 || keycode == 103)
+	if (keycode == KEY_T || keycode == KEY_G)
 		translation_y(fdf->i_point, fdf, keycode);
 	return (0);
 }

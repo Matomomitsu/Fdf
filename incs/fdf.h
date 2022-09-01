@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 06:27:39 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/16 22:47:55 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:08:02 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <math.h>
 # include "../libft/libft.h"
+# include "keys.h"
 
 typedef struct s_image
 {

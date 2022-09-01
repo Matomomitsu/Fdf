@@ -6,7 +6,7 @@
 #    By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 21:02:16 by mtomomit          #+#    #+#              #
-#    Updated: 2022/08/30 16:13:13 by mtomomit         ###   ########.fr        #
+#    Updated: 2022/09/01 12:20:22 by mtomomit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,10 +114,10 @@ re: fclean all
 
 rebonus: fclean_bonus bonus
 
-run: all clean
+run: all
 	./fdf test_maps/42.fdf
 
-runb: bonus clean_bonus
+runb: bonus
 	./fdf_bonus test_maps/42.fdf
 
 n:
@@ -126,8 +126,8 @@ n:
 nb:
 	norminette $(SRC_BONUS) $(HEADER_BONUS)
 
-runl: all clean
+runl: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf test_maps/42.fdf
 
-runbl: bonus clean_bonus
+runbl: bonus
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf_bonus test_maps/42.fdf
