@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 03:42:09 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/23 03:43:22 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:40:47 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	translation_y(t_point *point, t_fdf *fdf, int keycode)
 {
 	size_t	temp_angle;
 
-	if (keycode == 116)
+	if (keycode == KEY_T)
 		increase_y(point);
-	if (keycode == 103)
+	if (keycode == KEY_G)
 		decrease_y(point);
 	temp_angle = point->converted.rotated.rot_x;
 	rotate_x(point, temp_angle);

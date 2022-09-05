@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 01:36:26 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/16 22:54:29 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:40:41 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	rotation_x(t_point *point, t_fdf *fdf, int keycode)
 {
 	size_t	temp_angle;
 
-	if (keycode == 65364)
+	if (keycode == KEY_DOWN)
 		point->converted.rotated.rot_x--;
-	if (keycode == 65362)
+	if (keycode == KEY_UP)
 		point->converted.rotated.rot_x++;
 	change_angle(point);
 	temp_angle = point->converted.rotated.rot_x;

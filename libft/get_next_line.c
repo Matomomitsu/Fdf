@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 10:17:35 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/12 22:51:24 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:11:08 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,25 @@ static char	*partial_line(char *buffer)
 	return (line);
 }
 
-static char	*get_line(char *buffer, char *line, int fd, long int chars_read)
+static char	*get_line(char *buf, char *line, int fd, long int chars_read)
 {
 	char	*temp;
 
 	while (ft_strchr(line, '\n') == NULL && chars_read != 0)
 	{
-		if (ft_strchr(buffer, '\n'))
+		if (ft_strchr(&buf[0], '\n'))
 		{
-			temp = partial_line(buffer);
+			temp = partial_line(&buf[0]);
 			line = ft_realloc(line, ft_strlen(temp) + ft_strlen(line) + 1);
 			complete_line(&line, temp);
 			free(temp);
 		}
 		else
 		{
-			line = ft_realloc(line, ft_strlen(buffer) + ft_strlen(line) + 1);
-			complete_line(&line, buffer);
-			chars_read = read(fd, buffer, BUFFER_SIZE);
-			buffer[chars_read] = '\0';
+			line = ft_realloc(line, ft_strlen(&buf[0]) + ft_strlen(line) + 1);
+			complete_line(&line, &buf[0]);
+			chars_read = read(fd, &buf[0], BUFFER_SIZE);
+			buf[chars_read] = '\0';
 		}
 	}
 	if (chars_read == 0 && line[0] == '\0')
@@ -85,45 +85,46 @@ static char	*get_line(char *buffer, char *line, int fd, long int chars_read)
 
 static char	*read_file(char *buffer, char *line, int fd)
 {
-	size_t		i;
 	long int	chars_read;
-	size_t		len_buffer;
 
-	i = 0;
 	if (buffer != NULL && buffer[0] != '\0')
 	{
-		line = ft_realloc(line, ft_strlen(buffer) + ft_strlen(line) + 1);
-		complete_line(&line, buffer);
-		len_buffer = ft_strlen(buffer);
-		while (i < len_buffer)
-		{
-			((unsigned char *)buffer)[i] = '\0';
-			i++;
-		}
+		line = ft_realloc(line, ft_strlen(&buffer[0]) + ft_strlen(line) + 1);
+		complete_line(&line, &buffer[0]);
+		buffer[0] = '\0';
 	}
-	chars_read = read(fd, buffer, BUFFER_SIZE);
+	chars_read = read(fd, &buffer[0], BUFFER_SIZE);
 	if (chars_read < 0)
+	{
 		free(line);
-	if (chars_read < 0)
 		return (NULL);
+	}
 	buffer[chars_read] = '\0';
-	return (get_line(buffer, line, fd, chars_read));
+	return (get_line(&buffer[0], line, fd, chars_read));
 }
 
 char	*get_next_line(int fd)
 {
-	static char		buffer[BUFFER_SIZE + 1];
+	static char		*buffer[OPEN_MAX];
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
-	if (ft_strchr(buffer, '\n') == NULL)
+	if (buffer[fd] == NULL)
+	{
+		buffer[fd] = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		buffer[fd][0] = '\0';
+	}
+	if (ft_strchr(buffer[fd], '\n') == NULL)
 		line = ft_strdup((char *)"");
-	if (ft_strchr(buffer, '\n'))
-		line = partial_line(buffer);
-	if (ft_strchr(line, '\n'))
-		return (line);
+	if (ft_strchr(buffer[fd], '\n'))
+		line = partial_line(buffer[fd]);
 	else
-		return (read_file(buffer, line, fd));
-	return (NULL);
+		line = (read_file(buffer[fd], line, fd));
+	if (!line)
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+	}
+	return (line);
 }

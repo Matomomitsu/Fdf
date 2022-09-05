@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:50:45 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/16 22:53:46 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:40:20 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	decrease_scale(t_point	*point)
 void	handle_scale(int keycode, t_fdf *fdf)
 {
 	revert_axis(fdf->i_point);
-	if (keycode == 97)
+	if (keycode == KEY_A)
 		increase_scale(fdf->i_point);
-	if (keycode == 100)
+	if (keycode == KEY_D)
 		decrease_scale(fdf->i_point);
 	change_axis(fdf->i_point);
 	rotate_x(fdf->i_point, fdf->i_point->converted.rotated.rot_x);

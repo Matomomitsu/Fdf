@@ -6,7 +6,7 @@
 /*   By: mtomomit <mtomomit@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:33:33 by mtomomit          #+#    #+#             */
-/*   Updated: 2022/08/16 22:53:49 by mtomomit         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:40:20 by mtomomit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	decrease_z(t_point *point)
 
 void	handle_z(int keycode, t_fdf *fdf)
 {
-	if (keycode == 119)
+	if (keycode == KEY_W)
 		increase_z(fdf->i_point);
-	if (keycode == 115)
+	if (keycode == KEY_S)
 		decrease_z(fdf->i_point);
 	rotate_x(fdf->i_point, fdf->i_point->converted.rotated.rot_x);
 	rotate_y(fdf->i_point, fdf->i_point->converted.rotated.rot_y);
